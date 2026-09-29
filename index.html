@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulados das Provas 2026</title>
+  
+  <!-- CONFIGURAÇÃO DO PWA (APLICAÇÃO) -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
   <style>
     :root {
       --bg-canvas: #f3f4f6;          
@@ -1589,6 +1595,17 @@
     }
 
     carregarArquivosDoGithub();
+  </script>
+
+  <!-- REGISTO DO SERVICE WORKER (PWA) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('Service Worker registado com sucesso!'))
+          .catch(err => console.warn('Falha ao registar Service Worker:', err));
+      });
+    }
   </script>
 </body>
 </html>
